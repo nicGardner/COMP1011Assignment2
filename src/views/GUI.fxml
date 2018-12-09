@@ -30,10 +30,10 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <RadioButton fx:id="highLow" layoutX="394.0" layoutY="411.0" mnemonicParsing="false" text="Price High-Low" />
-      <RadioButton fx:id="lowHigh" layoutX="394.0" layoutY="428.0" mnemonicParsing="false" text="Price Low-High" />
-      <RadioButton fx:id="aZ" layoutX="394.0" layoutY="445.0" mnemonicParsing="false" text="Alphabetically A-Z" />
-      <RadioButton fx:id="zA" layoutX="394.0" layoutY="462.0" mnemonicParsing="false" text="Alphabetically Z-A" />
+      <RadioButton fx:id="highLow" layoutX="394.0" layoutY="411.0" mnemonicParsing="false" onAction="#highLowPressed" text="Price High-Low" />
+      <RadioButton fx:id="lowHigh" layoutX="394.0" layoutY="428.0" mnemonicParsing="false" onAction="#lowHighPressed" text="Price Low-High" />
+      <RadioButton fx:id="aZ" layoutX="394.0" layoutY="445.0" mnemonicParsing="false" onAction="#aZPressed" text="Alphabetically A-Z" />
+      <RadioButton fx:id="zA" layoutX="394.0" layoutY="462.0" mnemonicParsing="false" onAction="#zAPressed" text="Alphabetically Z-A" />
       <Text layoutX="52.0" layoutY="538.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Inventory Value:" wrappingWidth="176.13671875">
          <font>
             <Font size="16.0" />
@@ -54,5 +54,6 @@
             <Font size="16.0" />
          </font>
       </Text>
+      <Button fx:id="resetSortButton" layoutX="386.0" layoutY="490.0" mnemonicParsing="false" onAction="#resetSortButtonPressed" prefHeight="31.0" prefWidth="134.0" text="Reset Sorting Options" />
    </children>
 </AnchorPane>
