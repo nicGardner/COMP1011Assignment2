@@ -1,3 +1,11 @@
+/**
+ * Assignment 2 for my COMP1011 course.
+ * A simple app that provides users with a UI for sorting through a mock database of products, including the ability to "sell" products.
+ *
+ * @author Nic Gardner, 200349007
+ */
+
+
 package controllers;
 
 import javafx.application.Application;
@@ -15,7 +23,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../views/GUI.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Assignment 2");
         primaryStage.setScene(new Scene(root, 874, 700));
         primaryStage.show();
     }
@@ -25,6 +33,7 @@ public class Main extends Application {
     {
         // build the psudeau database
         PsudeauDB.buildDB();
+        // launch the gui
         launch(args);
     }
 }

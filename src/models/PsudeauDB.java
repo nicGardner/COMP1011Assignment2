@@ -6,10 +6,12 @@ import javafx.scene.image.Image;
 
 public class PsudeauDB {
     public PsudeauDB(){}
+
+    /**
+     * static method that creates 3 categories, and 3 products for each category, and enters them into Inventory to be used as a mock database
+     */
     public static void buildDB ()
     {
-        File x = new File("models/pics/Samsung-Galaxy-S8.jpg");
-        Image y = new Image(x.getPath());
 
 
         // 3 Phones

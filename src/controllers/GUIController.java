@@ -80,11 +80,15 @@ public class GUIController implements Initializable {
 
     }
 
+    /**
+     * populates the TableView element with updated data, based on the category and sort option selected.
+     * also sets up various elements that need to be updated whenever the TableView is. (total inventory and category values, and selects the first entry in the TableView by default)
+     */
     public void popTable()
     {
         ArrayList<Product> list = new ArrayList<>();
 
-        // if a category was selected
+        // checks if a category was selected
         if(choiceBox.getValue() != null)
         {
             list.addAll(Inventory.getProductsByCategory(choiceBox.getValue()));
@@ -94,11 +98,12 @@ public class GUIController implements Initializable {
             list.addAll(Inventory.getAllProducts());
         }
 
-        // if one of the buttons was pressed
+        // checks if one of the sort option radio buttons was pressed
         if (optionPressed >= 1 && optionPressed <= 4)
         {
             Collections.sort(list);
         }
+
         // after desired changes are made to the list, display it
         table.getItems().addAll(list);
 
@@ -132,42 +137,75 @@ public class GUIController implements Initializable {
         imgView.setImage(table.getSelectionModel().getSelectedItem().getImg());
     }
 
+    /**
+     * clears the TableView element and calls popTable
+     */
     public void reloadTable()
     {
         table.getItems().clear();
         popTable();
     }
 
+    /**
+     * fires when the sell button is pushed. reduces the stock of the selected Product by 1, then calls reloadTable()
+     *
+     * @param actionEvent
+     */
     public void sellButtonPressed(ActionEvent actionEvent)
     {
         table.getSelectionModel().getSelectedItem().sellStock();
         reloadTable();
     }
 
+    /**
+     * fires when the ordery by price high-low radio button is selected. calls Product.setSortBy(), passing it a 1, and calling reloadTable()
+     *
+     * @param actionEvent
+     */
     public void highLowPressed(ActionEvent actionEvent) {
         optionPressed = 1;
         Product.setSortBy(1);
         reloadTable();
     }
 
+    /**
+     * fires when the ordery by price low-high radio button is selected. calls Product.setSortBy(), passing it a 2, and calling reloadTable()
+     *
+     * @param actionEvent
+     */
     public void lowHighPressed(ActionEvent actionEvent) {
         optionPressed = 2;
         Product.setSortBy(2);
         reloadTable();
     }
 
+    /**
+     * fires when the ordery by alphabet A-Z radio button is selected. calls Product.setSortBy(), passing it a 3, and calling reloadTable()
+     *
+     * @param actionEvent
+     */
     public void aZPressed(ActionEvent actionEvent) {
         optionPressed = 3;
         Product.setSortBy(3);
         reloadTable();
     }
 
+    /**
+     * fires when the ordery by alphabet Z-A radio button is selected. calls Product.setSortBy(), passing it a 4, and calling reloadTable()
+     *
+     * @param actionEvent
+     */
     public void zAPressed(ActionEvent actionEvent) {
         optionPressed = 4;
         Product.setSortBy(4);
         reloadTable();
     }
 
+    /**
+     * fires when the reset sorting options button is selected. calls Product.setSortBy(), passing it a 0, unchecks all the radio buttons, sets the choiceBox value to null, and calls reloadTable()
+     *
+     * @param actionEvent
+     */
     public void resetSortButtonPressed(ActionEvent actionEvent) {
         optionPressed = 0;
         Product.setSortBy(0);
@@ -179,6 +217,12 @@ public class GUIController implements Initializable {
         zA.setSelected(false);
     }
 
+    /**
+     * fires when the confirm button is pressed. Calls reloadTable().
+     * had to use this because the combo box wasn't working when using a change listener
+     *
+     * @param actionEvent
+     */
     public void confirmButtonPressed(ActionEvent actionEvent) {
         reloadTable();
     }
