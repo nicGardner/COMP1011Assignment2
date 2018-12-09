@@ -1,5 +1,7 @@
 package controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -47,24 +49,43 @@ public class GUIController implements Initializable {
         // load all products into the table
         nameColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         descColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("desc"));
-
         popTable();
 
         // load the categories into the choiceBox
         choiceBox.getItems().addAll(Inventory.getCategories());
+
+        // add a change listener to the choice box
+//        choiceBox.setValue("Movies");
+//        choiceBox.getSelectionModel().selectedIndexProperty().addListener(
+//                (observable, oldValue, newValue) ->
+//                {
+//                    System.out.println(choiceBox.getValue());
+//                    reloadTable();
+//                }
+//        );
 
     }
 
     public void popTable()
     {
         ArrayList<Product> list = new ArrayList<>();
-        list.addAll(Inventory.getAllProducts());
+
+        // if a category was selected
+        if(choiceBox.getValue() != null)
+        {
+            list.addAll(Inventory.getProductsByCategory(choiceBox.getValue()));
+        }
+        else
+        {
+            list.addAll(Inventory.getAllProducts());
+        }
+
         // if one of the buttons was pressed
         if (optionPressed >= 1 && optionPressed <= 4)
         {
             Collections.sort(list);
         }
-        System.out.println(list);
+        // after desired changes are made to the list, display it
         table.getItems().addAll(list);
     }
 
@@ -107,10 +128,15 @@ public class GUIController implements Initializable {
     public void resetSortButtonPressed(ActionEvent actionEvent) {
         optionPressed = 0;
         Product.setSortBy(0);
+        choiceBox.setValue(null);
         reloadTable();
         highLow.setSelected(false);
         lowHigh.setSelected(false);
         aZ.setSelected(false);
         zA.setSelected(false);
+    }
+
+    public void confirmButtonPressed(ActionEvent actionEvent) {
+        reloadTable();
     }
 }

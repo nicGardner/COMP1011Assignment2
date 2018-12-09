@@ -86,7 +86,6 @@ public class Product implements Comparable<Product>{
     @Override
     public int compareTo(Product p)
     {
-        System.out.println(sortBy);
         if(sortBy == 1)
         {
             // sorts price high-low
