@@ -18,7 +18,7 @@
           <TableColumn fx:id="descColumn" prefWidth="286.0" text="C2" />
         </columns>
       </TableView>
-      <ImageView fitHeight="314.0" fitWidth="294.0" layoutX="540.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imgView" fitHeight="314.0" fitWidth="294.0" layoutX="540.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="sellButton" layoutX="628.0" layoutY="381.0" mnemonicParsing="false" onAction="#sellButtonPressed" prefHeight="60.0" prefWidth="118.0" text="Sell One Unit">
          <font>
             <Font size="14.0" />

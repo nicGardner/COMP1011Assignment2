@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import models.Inventory;
 import models.PsudeauDB;
 
+import java.awt.*;
+
 public class Main extends Application {
 
     @Override
