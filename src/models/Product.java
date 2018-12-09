@@ -69,6 +69,6 @@ public class Product {
 
     public String toString()
     {
-        return name + ": " + desc + " costs " + price + " and has " + stock + " units in stock";
+        return name + ": $" + price + " (" + stock + "units in stock)";
     }
 }
