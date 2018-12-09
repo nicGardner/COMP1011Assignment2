@@ -12,10 +12,10 @@ public class Product {
     public Product(String name, String desc, Image img, double price, int stock)
     {
         setName(name);
-        setDesc(desc);
         setImg(img);
         setPrice(price);
         setStock(stock);
+        setDesc(desc);
     }
 
     public String getName() {
@@ -65,11 +65,18 @@ public class Product {
         if (stock > 0)
         {
             stock --;
+            setDesc(toString());
+            System.out.println("stock sold. new stock for "+name+": "+stock);
         }
+        else
+        {
+            System.out.println("no stock to sell");
+        }
+
     }
 
     public String toString()
     {
-        return name + ": $" + price + " (" + stock + "units in stock)";
+        return name + ": $" + price + " (" + stock + " units in stock)";
     }
 }

@@ -18,7 +18,6 @@ public class Inventory {
 
     public static void addCategory(String category)
     {
-        System.out.println("adding category "+category);
         LinkedList<Product> list = new LinkedList<>();
         inventory.put(category, list);
     }

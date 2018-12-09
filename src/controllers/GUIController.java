@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.Inventory;
 import models.Product;
+import models.PsudeauDB;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,16 +25,32 @@ public class GUIController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
         // load all products into the table
         nameColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         descColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("desc"));
-        table.getItems().addAll(Inventory.getAllProducts());
+
+        popTable();
 
         // load the categories into the choiceBox
         choiceBox.getItems().addAll(Inventory.getCategories());
 
     }
 
-    public void sellButtonPressed(ActionEvent actionEvent) {
+    public void popTable()
+    {
+        table.getItems().addAll(Inventory.getAllProducts());
+    }
+
+    public void reloadTable()
+    {
+        table.getItems().clear();
+        popTable();
+    }
+
+    public void sellButtonPressed(ActionEvent actionEvent)
+    {
+        table.getSelectionModel().getSelectedItem().sellStock();
+        reloadTable();
     }
 }
