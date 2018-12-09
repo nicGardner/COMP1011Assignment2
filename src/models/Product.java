@@ -43,7 +43,8 @@ public class Product {
     }
 
     public void setDesc(String desc) {
-        this.desc = desc;
+        //this.desc = desc;
+        this.desc = toString();
     }
 
     public void setImg(Image img) {

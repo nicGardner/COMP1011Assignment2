@@ -26,7 +26,7 @@ public class GUIController implements Initializable {
 
         // load all products into the table
         nameColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
-        //descColumn.setCellValueFactory(new PropertyValueFactory<Product, String>(""));
+        descColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("desc"));
         table.getItems().addAll(Inventory.getAllProducts());
 
         // load the categories into the choiceBox
